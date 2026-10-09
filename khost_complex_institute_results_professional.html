@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13‑A & 13‑B · Second Semester Results</title>
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: "Inter", system-ui, -apple-system, sans-serif;
+            background: #edf2f5;
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 2rem 1.5rem;
+            color: #0b1b2f;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .result-container {
+            max-width: 1400px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 1.4rem;
+            box-shadow: 0 20px 35px -8px rgba(0, 20, 40, 0.12), 0 5px 15px -5px rgba(0, 0, 0, 0.05);
+            padding: 2rem 2rem 2.2rem 2rem;
+            border: 1px solid #e0e7ed;
+            overflow: hidden;
+        }
+
+        .semester-badge {
+            background: #f0f4fa;
+            padding: 0.6rem 1.4rem;
+            border-radius: 60px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: #2c3e58;
+            border: 1px solid #e2e9f2;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
+        }
+
+        .semester-badge span {
+            font-weight: 700;
+            color: #0b1b2f;
+            background: white;
+            padding: 0.15rem 0.7rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            border: 1px solid #d0ddea;
+        }
+
+        .institute-masthead {
+            display: grid;
+            grid-template-columns: 104px minmax(0, 1fr) 104px;
+            align-items: center;
+            gap: 1.25rem;
+            padding: 1.25rem 1.2rem 1.45rem;
+            margin: -0.25rem 0 1.35rem;
+            border-bottom: 3px solid #b99a52;
+            background: linear-gradient(115deg, #f5f8fc 0%, #ffffff 48%, #f5f8fc 100%);
+            border-radius: 1.25rem 1.25rem 0 0;
+            text-align: center;
+        }
+        .logo-slot {
+            width: 92px;
+            height: 92px;
+            margin: 0 auto;
+            border-radius: 50%;
+            border: 2px solid #d5c18e;
+            background: #fff;
+            box-shadow: 0 5px 16px rgba(11, 27, 47, .10);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .logo-slot img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 7px;
+        }
+        .logo-fallback {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            color: #fff;
+            background: linear-gradient(145deg, #123e35, #1f6b54);
+            font-family: Georgia, serif;
+            font-weight: 800;
+            font-size: 1.35rem;
+            letter-spacing: .04em;
+        }
+        .eyebrow {
+            color: #9a7930;
+            font-size: .68rem;
+            font-weight: 800;
+            letter-spacing: .19em;
+            margin-bottom: .35rem;
+        }
+        .institute-heading h1 {
+            color: #102f2a;
+            font-size: clamp(1.2rem, 2.4vw, 1.85rem);
+            line-height: 1.2;
+            font-weight: 800;
+            letter-spacing: -.035em;
+        }
+        .institute-heading h2 {
+            margin-top: .35rem;
+            color: #354d49;
+            font-size: clamp(.85rem, 1.6vw, 1.08rem);
+            font-weight: 650;
+            line-height: 1.35;
+        }
+        .institute-heading h3 {
+            margin-top: .22rem;
+            color: #52645f;
+            font-size: .98rem;
+            font-weight: 600;
+        }
+        .department-label {
+            display: inline-block;
+            margin-top: .65rem;
+            padding: .32rem .9rem;
+            border-radius: 4px;
+            background: #123e35;
+            color: #fff;
+            font-size: .72rem;
+            font-weight: 800;
+            letter-spacing: .16em;
+        }
+        .results-heading {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.65rem;
+            padding: 1.1rem 1.2rem;
+            border: 1px solid #e5ebf2;
+            border-left: 4px solid #1f6ed4;
+            border-radius: .9rem;
+            background: #fff;
+        }
+        .results-heading h4 {
+            color: #0b1b2f;
+            font-size: 1.35rem;
+            line-height: 1.25;
+            font-weight: 750;
+            letter-spacing: -.025em;
+        }
+        .results-heading .sub {
+            margin-top: .35rem;
+            font-size: .88rem;
+            color: #617a99;
+            font-weight: 500;
+        }
+        .semester-badge .year-label {
+            font-weight: 700;
+            color: #0b1b2f;
+            background: #fff;
+            padding: .15rem .7rem;
+            border-radius: 30px;
+            font-size: .85rem;
+            border: 1px solid #d0ddea;
+        }
+
+        .class-tabs {
+            display: flex;
+            gap: 0.6rem;
+            margin-bottom: 1.8rem;
+            border-bottom: 1px solid #e9f0f7;
+            padding-bottom: 0.2rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            padding: 0.7rem 1.8rem;
+            font-weight: 600;
+            font-size: 1rem;
+            font-family: "Inter", sans-serif;
+            color: #617a99;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: 0.15s;
+            letter-spacing: -0.01em;
+            border: 1px solid transparent;
+        }
+
+        .tab-btn i {
+            font-style: normal;
+            font-weight: 500;
+            font-size: 0.85rem;
+            background: #e9f0f7;
+            color: #3c5779;
+            padding: 0.1rem 0.7rem;
+            border-radius: 30px;
+            margin-left: 0.5rem;
+        }
+
+        .tab-btn.active {
+            background: #0b1b2f;
+            color: white;
+            box-shadow: 0 8px 14px -6px rgba(11, 27, 47, 0.2);
+        }
+
+        .tab-btn.active i {
+            background: #2c4e74;
+            color: white;
+        }
+
+        .tab-btn:hover:not(.active) {
+            background: #f0f6fe;
+            color: #0b1b2f;
+        }
+
+        .toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.2rem;
+            gap: 1rem;
+        }
+
+        .search-wrapper {
+            display: flex;
+            align-items: center;
+            background: #f9fcff;
+            border: 1px solid #e2e9f2;
+            border-radius: 60px;
+            padding: 0.2rem 0.2rem 0.2rem 1.2rem;
+            min-width: 260px;
+            transition: 0.1s;
+        }
+
+        .search-wrapper:focus-within {
+            border-color: #1f6ed4;
+            box-shadow: 0 0 0 3px rgba(31, 110, 212, 0.1);
+        }
+
+        .search-wrapper input {
+            border: none;
+            background: transparent;
+            padding: 0.7rem 0.5rem 0.7rem 0;
+            font-size: 0.95rem;
+            font-family: "Inter", sans-serif;
+            width: 100%;
+            outline: none;
+            color: #0b1b2f;
+        }
+
+        .search-wrapper input::placeholder { color: #9bb0c7; font-weight: 400; }
+
+        .search-wrapper button {
+            background: #1f6ed4;
+            border: none;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            font-family: "Inter", sans-serif;
+            transition: 0.1s;
+            white-space: nowrap;
+        }
+
+        .search-wrapper button:hover { background: #0b5bbf; }
+
+        .summary-chip {
+            background: #f0f6fe;
+            border: 1px solid #d6e6fc;
+            padding: 0.6rem 1.4rem;
+            border-radius: 60px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #1f4e8c;
+        }
+
+        .summary-chip strong { font-weight: 700; color: #0b1b2f; }
+
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 1.4rem;
+            border: 1px solid #eef3f9;
+            background: white;
+            margin-bottom: 1.8rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.01);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            min-width: 1000px;
+        }
+
+        th {
+            text-align: left;
+            padding: 1rem 1rem;
+            background: #f9fcff;
+            font-weight: 600;
+            color: #2c3e58;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            border-bottom: 1px solid #e2e9f2;
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid #f0f5fb;
+            color: #142b44;
+            vertical-align: middle;
+        }
+
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: #fafdff; }
+
+        .student-name { font-weight: 600; color: #0b1b2f; }
+        .father-name { color: #5a6e86; font-size: 0.85rem; }
+
+        .marks-cell {
+            font-weight: 600;
+            font-family: "Inter", monospace;
+            letter-spacing: -0.01em;
+        }
+
+        .marks-cell.total { font-weight: 700; color: #0b1b2f; }
+        .marks-cell.na { color: #b0c2d6; font-weight: 400; }
+
+        /* Position badge */
+        .position-pill {
+            display: inline-block;
+            padding: 0.3rem 0.9rem;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 0.78rem;
+            text-align: center;
+            min-width: 3.6rem;
+            background: #f0f4fa;
+            color: #3c5779;
+            border: 1px solid #dbe5f0;
+            letter-spacing: 0.01em;
+        }
+
+        .position-pill.top1 {
+            background: linear-gradient(135deg, #fff3c4, #ffe38a);
+            color: #7a5a00;
+            border-color: #f0d27a;
+            box-shadow: 0 2px 6px rgba(218, 175, 0, 0.15);
+        }
+
+        .position-pill.top2 {
+            background: linear-gradient(135deg, #eef2f7, #dbe4ef);
+            color: #3c5779;
+            border-color: #c8d6e6;
+        }
+
+        .position-pill.top3 {
+            background: linear-gradient(135deg, #fce4d6, #f8cdb4);
+            color: #8a4a1f;
+            border-color: #f0b894;
+        }
+
+        .position-pill.fail-pos {
+            background: #f5f7fa;
+            color: #97a9bd;
+            border-color: #e2e9f2;
+        }
+
+        .stats-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 0.8rem;
+            border-top: 1px solid #eef3f9;
+        }
+
+        .stat-group { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+
+        .stat-item { display: flex; align-items: baseline; gap: 0.4rem; }
+        .stat-item .label { font-size: 0.85rem; color: #617a99; font-weight: 500; }
+        .stat-item .value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #0b1b2f;
+            letter-spacing: -0.02em;
+        }
+        .stat-item .value small { font-size: 0.8rem; font-weight: 500; color: #829ab2; }
+
+        @media (max-width: 700px) {
+            .result-container { padding: 1.4rem; border-radius: 1.6rem; }
+            .institute-masthead {
+                grid-template-columns: 58px minmax(0, 1fr) 58px;
+                gap: .45rem;
+                padding: 1rem .4rem 1.15rem;
+            }
+            .logo-slot { width: 54px; height: 54px; }
+            .logo-fallback { font-size: .9rem; }
+            .eyebrow { font-size: .52rem; letter-spacing: .1em; }
+            .institute-heading h1 { font-size: 1rem; }
+            .institute-heading h2 { font-size: .72rem; }
+            .institute-heading h3 { font-size: .75rem; }
+            .department-label { font-size: .57rem; padding: .28rem .55rem; letter-spacing: .1em; }
+            .results-heading { padding: .9rem; }
+            .results-heading h4 { font-size: 1.08rem; }
+            .results-heading .sub { font-size: .78rem; }
+            .tab-btn { padding: 0.5rem 1rem; font-size: 0.9rem; }
+            .toolbar { flex-direction: column; align-items: stretch; }
+            .search-wrapper { width: 100%; }
+            .summary-chip { text-align: center; }
+            .stats-row { flex-direction: column; align-items: flex-start; }
+        }
+
+        @media print {
+            body { background: #fff; padding: 0; }
+            .result-container { max-width: none; box-shadow: none; border: 0; padding: 8mm; }
+            .search-wrapper, .class-tabs { display: none !important; }
+            .institute-masthead { break-inside: avoid; }
+            .table-wrapper { overflow: visible; border-radius: 0; }
+            table { min-width: 0; font-size: 8pt; }
+            th, td { padding: 5px 6px; }
+            tr:hover td { background: transparent; }
+        }
+    </style>
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/9476BDEF-184A-4648-8B3E-09370488F455/main.js" charset="UTF-8"></script></head>
+<body>
+    <div class="result-container">
+        <!-- Institutional masthead: replace the two logo placeholders with your official logo images -->
+        <div class="institute-masthead">
+            <div class="logo-slot" aria-label="Left institute logo placeholder">
+                <img src="logo-left.png" alt="Institute logo left"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <span class=""><img src="image1.png" alt=""></span>
+            </div>
+            <div class="institute-heading">
+                <div class="eyebrow">OFFICIAL ACADEMIC RECORD</div>
+                <h1>Afghanistan Islamic Emirate</h1>
+                <h2>Department of Technical and Vocational Institute</h2>
+                <h3>Khost Complex Institute</h3>
+                <div class="department-label">COMPUTER SCIENCE</div>
+            </div>
+            <div class="logo-slot" aria-label="Right institute logo placeholder">
+                <img src="logo-right.png" alt="Institute logo right"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <span class=""><img src="image.png" alt=""></span>
+            </div>
+        </div>
+
+        <div class="results-heading">
+            <div>
+                <h4>13-A &amp; 13-B · Second Semester Results</h4>
+                <p class="sub">Total marks (100) = Viva + Paper + Quiz · Position based on total marks</p>
+            </div>
+            <div class="semester-badge">
+                <span class="year-label">2025</span><span>Semester 2</span>
+            </div>
+        </div>
+
+        <!-- class tabs -->
+        <div class="class-tabs">
+            <button class="tab-btn active" data-class="13-A" id="tab13A">13‑A <i id="count13A">65</i></button>
+            <button class="tab-btn" data-class="13-B" id="tab13B">13‑B <i id="count13B">41</i></button>
+        </div>
+
+        <!-- search & summary -->
+        <div class="toolbar">
+            <div class="search-wrapper">
+                <input type="text" id="searchInput" placeholder="🔍 Search by name or father name…">
+                <button id="clearSearchBtn">Clear</button>
+            </div>
+            <div class="summary-chip" id="summaryChip">
+                <strong>13‑A</strong> · Showing <span id="visibleCount">65</span> students
+            </div>
+        </div>
+
+        <!-- table -->
+        <div class="table-wrapper">
+            <table id="resultTable">
+                <thead>
+                    <tr>
+                        <th>S.No</th>
+                        <th>Name</th>
+                        <th>Father Name</th>
+                        <th>Total (100)</th>
+                        <th>Viva</th>
+                        <th>Paper</th>
+                        <th>Quiz</th>
+                        <th>Position</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- JS will populate -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- stats / footer -->
+        <div class="stats-row">
+            <div class="stat-group">
+                <div class="stat-item">
+                    <span class="label">Class average</span>
+                    <span class="value" id="classAvg">—</span>
+                </div>
+                <div class="stat-item">
+                    <span class="label">Passed (≥50)</span>
+                    <span class="value" id="passedCount">—</span>
+                </div>
+                <div class="stat-item">
+                    <span class="label">Failed / absent</span>
+                    <span class="value" id="failedCount">—</span>
+                </div>
+            </div>
+            <div style="font-size: 0.8rem; color: #8da1b9;">
+                ⚡ Rank is based on total marks. Ties share the same position.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // ---------- RAW DATA ----------
+            // 13-B second semester (41 students)
+            const class13B = [
+                { sno: 1, name: "حمید الله", father: "ولی", total: 90, viva: 8, paper: 54, quiz: 28 },
+                { sno: 2, name: "بیت الله", father: "خیال بت خان", total: 91, viva: 9, paper: 53, quiz: 29 },
+                { sno: 3, name: "فرهاد", father: "جنت ورشاه", total: 32, viva: 8, paper: "A", quiz: 24 },
+                { sno: 4, name: "فهیم الله", father: "ګل سلام", total: 0, viva: "A", paper: "A", quiz: "A" },
+                { sno: 5, name: "سیف الله", father: "طالم جان", total: 79, viva: 9, paper: 46, quiz: 24 },
+                { sno: 6, name: "سیف الرحمن", father: "بادشاه وال خان", total: 64, viva: 8, paper: 36, quiz: 20 },
+                { sno: 7, name: "مبارک", father: "محمد نعیم", total: 76, viva: 9, paper: 42, quiz: 25 },
+                { sno: 8, name: "اکرام الله", father: "مصورخان", total: 62, viva: 9, paper: 28, quiz: 25 },
+                { sno: 9, name: "حنیف الله", father: "میر صاحب خان", total: 79, viva: 8, paper: 44, quiz: 27 },
+                { sno: 10, name: "مصطفی", father: "سیف الله خان", total: 57, viva: 7, paper: 30, quiz: 20 },
+                { sno: 11, name: "فیض الله", father: "راز محمد", total: 80, viva: 7, paper: 46, quiz: 27 },
+                { sno: 12, name: "ذکیم", father: "سید محمد", total: 6, viva: 6, paper: "A", quiz: "A" },
+                { sno: 13, name: "شاکر الله", father: "اله خان", total: 55, viva: 7, paper: 28, quiz: 20 },
+                { sno: 14, name: "صادق شاه", father: "حاجی سبیل", total: 20, viva: "A", paper: "A", quiz: 20 },
+                { sno: 15, name: "اباسین", father: "نور جمال", total: 39, viva: 6, paper: 33, quiz: "A" },
+                { sno: 16, name: "محمد زاهد", father: "یعقوب خان", total: 84, viva: 6, paper: 54, quiz: 24 },
+                { sno: 17, name: "هدایت الله", father: "شریف الله", total: 33, viva: 3, paper: 30, quiz: "A" },
+                { sno: 18, name: "فاروق", father: "دوست علی خان", total: 6, viva: 6, paper: "A", quiz: "A" },
+                { sno: 19, name: "بلال", father: "اکبر ولی", total: 73, viva: 6, paper: 43, quiz: 24 },
+                { sno: 20, name: "احمد", father: "محمد نور جان", total: 9, viva: 9, paper: "A", quiz: "A" },
+                { sno: 21, name: "سلیمان", father: "ممتاز الدین", total: 33, viva: 6, paper: 27, quiz: "A" },
+                { sno: 22, name: "سخی زمان", father: "سحي دارخان", total: 46, viva: 1, paper: 21, quiz: 24 },
+                { sno: 23, name: "زاهد الله", father: "حق نواز", total: 29, viva: 9, paper: "A", quiz: 20 },
+                { sno: 24, name: "روحید الله", father: "حیات الله", total: 6, viva: 6, paper: "A", quiz: "A" },
+                { sno: 25, name: "عصمت الله", father: "الف الدین", total: 63, viva: 9, paper: 32, quiz: 22 },
+                { sno: 26, name: "سیدانور", father: "مولوی نادرګل", total: 55, viva: 7, paper: 25, quiz: 23 },
+                { sno: 27, name: "فضل الرحمن", father: "معاون", total: 61, viva: 9, paper: 52, quiz: "A" },
+                { sno: 28, name: "زبیر", father: "حبیب الله", total: 1, viva: 1, paper: "A", quiz: "A" },
+                { sno: 29, name: "شاهد الله", father: "نصرالله", total: 70, viva: 6, paper: 43, quiz: 21 },
+                { sno: 30, name: "صفت الله", father: "ربنواز", total: 48, viva: 7, paper: 17, quiz: 24 },
+                { sno: 31, name: "امید الله", father: "عید الرشید", total: 52, viva: 6, paper: 25, quiz: 21 },
+                { sno: 32, name: "بادشاه نور", father: "محمدنور", total: 28, viva: 5, paper: "A", quiz: 23 },
+                { sno: 33, name: "عابد الله", father: "صابر ګل", total: 56, viva: 2, paper: 30, quiz: 24 },
+                { sno: 34, name: "رفیق الله", father: "کفتان", total: 33, viva: 6, paper: 27, quiz: "A" },
+                { sno: 35, name: "میربوشی", father: "نظیر", total: 29, viva: "A", paper: 29, quiz: "A" },
+                { sno: 36, name: "عبدالستار", father: "سید عالم شاه", total: 15, viva: 5, paper: 10, quiz: "A" },
+                { sno: 37, name: "هلال", father: "محمد بلال", total: 35, viva: 6, paper: 8, quiz: 21 },
+                { sno: 38, name: "رحمن ولي", father: "ولي ظابط", total: 2, viva: 2, paper: "A", quiz: "A" },
+                { sno: 39, name: "محمد الیاس", father: "عبدالغفور", total: 35, viva: "A", paper: 35, quiz: "A" },
+                { sno: 40, name: "اسد الله", father: "کمین", total: 49, viva: 3, paper: 26, quiz: 20 },
+                { sno: 41, name: "هدایت اله", father: "قسمت الله", total: 0, viva: "A", paper: "A", quiz: "A" }
+            ];
+
+            // 13-A second semester (65 students)
+            const class13A = [
+                { sno: 1, name: "نصیر احمد", father: "حکیم شاه", total: 85, viva: 9, paper: 48, quiz: 28 },
+                { sno: 2, name: "منیب احمد", father: "نصیر احمد", total: 98, viva: 10, paper: 60, quiz: 28 },
+                { sno: 3, name: "نجیب الله", father: "رامبیل", total: 60, viva: "A", paper: 33, quiz: 27 },
+                { sno: 4, name: "محبت الله", father: "سید احمد خان", total: 99, viva: 10, paper: 60, quiz: 29 },
+                { sno: 5, name: "محمد نور", father: "لاهور خان", total: 87, viva: 9, paper: 51, quiz: 27 },
+                { sno: 6, name: "حکمت الله", father: "قرار محمد", total: 89, viva: 9, paper: 51, quiz: 29 },
+                { sno: 7, name: "خالد الرخمن", father: "حبیب الرخمن", total: 61, viva: 10, paper: 51, quiz: "" },
+                { sno: 8, name: "فرید الله", father: "محمد اکبر", total: 80, viva: 9, paper: 44, quiz: 27 },
+                { sno: 9, name: "نصیب الله", father: "خیر الله", total: 4, viva: 4, paper: "A", quiz: "A" },
+                { sno: 10, name: "محمد", father: "سید الرخمن", total: 0, viva: "A", paper: "A", quiz: "A" },
+                { sno: 11, name: "ارین", father: "کمال", total: 43, viva: 8, paper: 35, quiz: "A" },
+                { sno: 12, name: "مسلم خیل", father: "موسی خیل", total: 94, viva: 9, paper: 55, quiz: 30 },
+                { sno: 13, name: "فرمان الله", father: "خاجی قمرګل", total: 0, viva: "A", paper: "A", quiz: "A" },
+                { sno: 14, name: "عمران الله", father: "شیر نواز خان", total: 40, viva: 9, paper: 31, quiz: "A" },
+                { sno: 15, name: "مجیب الرحمن", father: "فضل الرحمن", total: 45, viva: "A", paper: 19, quiz: 26 },
+                { sno: 16, name: "قریب الله", father: "محمد ناصر", total: 61, viva: 9, paper: 26, quiz: 26 },
+                { sno: 17, name: "دولت خان", father: "عقل خان", total: 66, viva: 9, paper: 30, quiz: 27 },
+                { sno: 18, name: "هارون", father: "اکبر", total: 31, viva: 8, paper: 23, quiz: "" },
+                { sno: 19, name: "عصمت الله", father: "صابر ګل", total: 52, viva: "A", paper: 32, quiz: 20 },
+                { sno: 20, name: "نور ولی", father: "رایس", total: 82, viva: 8, paper: 48, quiz: 26 },
+                { sno: 21, name: "محمد زمان", father: "نیک بت خان", total: 81, viva: "A", paper: 52, quiz: 29 },
+                { sno: 22, name: "الماس", father: "شیرولی", total: 0, viva: "A", paper: "A", quiz: "A" },
+                { sno: 23, name: "ساجد الله", father: "صدیق الله", total: 43, viva: 2, paper: 21, quiz: 20 },
+                { sno: 24, name: "اکرام الله", father: "ګل احمد خان", total: 0, viva: "A", paper: "A", quiz: "A" },
+                { sno: 25, name: "یونس", father: "زولفقار", total: 63, viva: 8, paper: 29, quiz: 26 },
+                { sno: 26, name: "محمد الرحمن", father: "مارو خان", total: 67, viva: 8, paper: 32, quiz: 27 },
+                { sno: 27, name: "رامبیل", father: "سهیل", total: 55, viva: 8, paper: 21, quiz: 26 },
+                { sno: 28, name: "فرید الله", father: "فاروق", total: 0, viva: "A", paper: "A", quiz: "A" },
+                { sno: 29, name: "عارف الله", father: "محمد یونس", total: 65, viva: 8, paper: 37, quiz: 20 },
+                { sno: 30, name: "زوبیر احمد", father: "شاه احمد", total: 50, viva: "A", paper: 30, quiz: 20 },
+                { sno: 31, name: "حمزه", father: "سعید الله", total: 27, viva: "A", paper: "A", quiz: 27 },
+                { sno: 32, name: "حزب الله", father: "شیر محمد خان", total: 0, viva: "A", paper: "A", quiz: "" },
+                { sno: 33, name: "مجیب الله", father: "محمد ولی", total: 36, viva: "A", paper: 16, quiz: 20 },
+                { sno: 34, name: "نصرت الله", father: "ولی جان", total: 0, viva: "A", paper: "A", quiz: "" },
+                { sno: 35, name: "شاهد الله", father: "عصمت الله", total: 36, viva: 9, paper: "A", quiz: 27 },
+                { sno: 36, name: "محمد الله", father: "نیک باد شاه", total: 30, viva: "A", paper: 30, quiz: "A" },
+                { sno: 37, name: "عفار الله", father: "عید محمد", total: 0, viva: "A", paper: "A", quiz: "A" },
+                { sno: 38, name: "نصرت الله", father: "قدوس خان", total: 0, viva: "A", paper: "A", quiz: "A" },
+                { sno: 39, name: "عصمت الله", father: "احمد شاه", total: 0, viva: "A", paper: "A", quiz: "A" },
+                { sno: 40, name: "عبدالقیوم", father: "اکیف خان", total: 0, viva: "A", paper: "A", quiz: "A" },
+                { sno: 41, name: "نقیب الله", father: "محمد ولی", total: 0, viva: "A", paper: "A", quiz: "A" },
+                { sno: 42, name: "بخت الله", father: "خیا ګل", total: 0, viva: "A", paper: "A", quiz: "A" },
+                { sno: 43, name: "ایمل", father: "عمر خان", total: 0, viva: "A", paper: "A", quiz: "A" },
+                { sno: 44, name: "ډاکټر الله", father: "مظاهر خان", total: 0, viva: "A", paper: "A", quiz: "A" },
+                { sno: 45, name: "بلال", father: "عبدالظاهر", total: 0, viva: "A", paper: "A", quiz: "A" },
+                { sno: 46, name: "فرهاد", father: "الیاس", total: 0, viva: "A", paper: "A", quiz: "A" },
+                { sno: 47, name: "سیدالروف", father: "مادیم", total: 0, viva: "A", paper: "A", quiz: "A" },
+                { sno: 48, name: "حفیظ الله", father: "خان افضل", total: 0, viva: "A", paper: "A", quiz: "A" },
+                { sno: 49, name: "زین الله", father: "ګل محمد", total: 0, viva: "A", paper: "A", quiz: "A" },
+                { sno: 50, name: "احمد", father: "ابراهیم", total: 0, viva: "A", paper: "A", quiz: "A" },
+                { sno: 51, name: "اسراالدین", father: "داود", total: 0, viva: "A", paper: "A", quiz: "A" },
+                { sno: 52, name: "امین الله", father: "جانبازخان", total: 0, viva: "A", paper: "A", quiz: "A" },
+                { sno: 53, name: "فرید الله", father: "محمد نظیر", total: 0, viva: "A", paper: "A", quiz: "A" },
+                { sno: 54, name: "اجمل الدین", father: "میراز الدین", total: 0, viva: "A", paper: "A", quiz: "A" },
+                { sno: 55, name: "عمر", father: "ګل اباد خان", total: 0, viva: "A", paper: "A", quiz: "A" },
+                { sno: 56, name: "عبدالوهاب", father: "سید عالم شاه", total: 0, viva: 0, paper: "A", quiz: "A" },
+                { sno: 57, name: "یوسف الرحمن", father: "نواز خان", total: 0, viva: "A", paper: "A", quiz: "A" },
+                { sno: 58, name: "عبدالوهاب", father: "ولی سید", total: 50, viva: 0, paper: 50, quiz: "A" },
+                { sno: 59, name: "حسیب الله", father: "سلام خان", total: 0, viva: "A", paper: "A", quiz: "A" },
+                { sno: 60, name: "عبدالله", father: "قادر خان", total: 69, viva: 8, paper: 34, quiz: 27 },
+                { sno: 61, name: "محمد الله", father: "افسر خان", total: 7, viva: 7, paper: "A", quiz: "A" },
+                { sno: 62, name: "سجاد احمد", father: "سیف الرحمن", total: 0, viva: "A", paper: "A", quiz: "A" },
+                { sno: 63, name: "عبدالقدوس", father: "خبیب الله", total: 0, viva: "A", paper: "A", quiz: "A" },
+                { sno: 64, name: "حیات الله", father: "نوروزخان", total: 0, viva: "A", paper: "A", quiz: "A" },
+                { sno: 65, name: "بلال", father: "غفور جان", total: 0, viva: "A", paper: "A", quiz: "A" }
+            ];
+
+            // ---------- DOM refs ----------
+            const tab13A = document.getElementById('tab13A');
+            const tab13B = document.getElementById('tab13B');
+            const tableBody = document.getElementById('tableBody');
+            const searchInput = document.getElementById('searchInput');
+            const clearSearchBtn = document.getElementById('clearSearchBtn');
+            const summaryChip = document.getElementById('summaryChip');
+            const visibleCountSpan = document.getElementById('visibleCount');
+            const count13A = document.getElementById('count13A');
+            const count13B = document.getElementById('count13B');
+            const classAvgEl = document.getElementById('classAvg');
+            const passedCountEl = document.getElementById('passedCount');
+            const failedCountEl = document.getElementById('failedCount');
+
+            // state
+            let currentClass = '13-A';
+            let searchTerm = '';
+
+            // update student counts in tabs
+            count13A.textContent = class13A.length;
+            count13B.textContent = class13B.length;
+
+            // ---------- helpers ----------
+            function displayMark(value) {
+                if (value === 'A' || value === '' || value === undefined || value === null) return 'A';
+                return value;
+            }
+
+            function getNumericTotal(student) {
+                if (student.total === 'A' || student.total === '' || student.total === undefined) return 0;
+                return Number(student.total) || 0;
+            }
+
+            // Build a position map (sno → position string) for a class
+            function buildPositionMap(data) {
+                // Create array of {sno, total} and sort descending
+                const sorted = data
+                    .map(s => ({ sno: s.sno, total: getNumericTotal(s) }))
+                    .sort((a, b) => b.total - a.total);
+
+                const map = {};
+                let rank = 1;
+                for (let i = 0; i < sorted.length; i++) {
+                    if (i > 0 && sorted[i].total < sorted[i - 1].total) {
+                        rank = i + 1;
+                    }
+                    map[sorted[i].sno] = rank;
+                }
+                return map;
+            }
+
+            // Convert rank number to ordinal string (1st, 2nd, 3rd, 4th, ...)
+            function ordinal(n) {
+                const s = ["th", "st", "nd", "rd"];
+                const v = n % 100;
+                return n + (s[(v - 20) % 10] || s[v] || s[0]);
+            }
+
+            // Get CSS class for position badge
+            function getPositionClass(rank) {
+                if (rank === 1) return 'top1';
+                if (rank === 2) return 'top2';
+                if (rank === 3) return 'top3';
+                return '';
+            }
+
+            // ---------- render table ----------
+            function renderTable() {
+                const data = currentClass === '13-A' ? class13A : class13B;
+                const positionMap = buildPositionMap(data);
+
+                // filter by search (name or father)
+                const filtered = data.filter(s => {
+                    if (!searchTerm) return true;
+                    const term = searchTerm.toLowerCase();
+                    return s.name.toLowerCase().includes(term) || s.father.toLowerCase().includes(term);
+                });
+
+                let html = '';
+                filtered.forEach(s => {
+                    const rank = positionMap[s.sno];
+                    const positionText = ordinal(rank);
+                    const posClass = getPositionClass(rank);
+                    const row = `
+                        <tr>
+                            <td>${s.sno}</td>
+                            <td class="student-name">${s.name}</td>
+                            <td class="father-name">${s.father}</td>
+                            <td class="marks-cell total">${s.total}</td>
+                            <td class="marks-cell">${displayMark(s.viva)}</td>
+                            <td class="marks-cell">${displayMark(s.paper)}</td>
+                            <td class="marks-cell">${displayMark(s.quiz)}</td>
+                            <td><span class="position-pill ${posClass}">${positionText}</span></td>
+                        </tr>
+                    `;
+                    html += row;
+                });
+
+                if (filtered.length === 0) {
+                    html = `<tr><td colspan="8" style="text-align:center; padding:2.5rem; color:#829ab2;">No students match your search.</td></tr>`;
+                }
+
+                tableBody.innerHTML = html;
+                visibleCountSpan.textContent = filtered.length;
+                summaryChip.innerHTML = `<strong>${currentClass}</strong> · Showing <span id="visibleCount">${filtered.length}</span> students`;
+
+                // compute stats on the full class dataset
+                let totalSum = 0;
+                let numericCount = 0;
+                let passed = 0;
+                let failed = 0;
+
+                data.forEach(s => {
+                    const tot = getNumericTotal(s);
+                    totalSum += tot;
+                    numericCount++;
+                    if (tot >= 50) passed++;
+                    else failed++;
+                });
+
+                const avg = numericCount > 0 ? (totalSum / numericCount).toFixed(1) : '—';
+                classAvgEl.textContent = avg;
+                passedCountEl.textContent = passed;
+                failedCountEl.textContent = failed;
+            }
+
+            // ---------- tab switching ----------
+            function setActiveTab(classId) {
+                currentClass = classId;
+                if (classId === '13-A') {
+                    tab13A.classList.add('active');
+                    tab13B.classList.remove('active');
+                } else {
+                    tab13B.classList.add('active');
+                    tab13A.classList.remove('active');
+                }
+                searchInput.value = '';
+                searchTerm = '';
+                renderTable();
+            }
+
+            // ---------- event listeners ----------
+            tab13A.addEventListener('click', () => setActiveTab('13-A'));
+            tab13B.addEventListener('click', () => setActiveTab('13-B'));
+
+            searchInput.addEventListener('input', (e) => {
+                searchTerm = e.target.value.trim();
+                renderTable();
+            });
+
+            clearSearchBtn.addEventListener('click', () => {
+                searchInput.value = '';
+                searchTerm = '';
+                renderTable();
+            });
+
+            // ---------- initial render ----------
+            setActiveTab('13-A');
+        })();
+    </script>
+</body>
+</html>
